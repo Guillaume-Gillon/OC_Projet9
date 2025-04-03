@@ -5,6 +5,7 @@ Cette application permet de :<br>
 - Lire des critiques de livres ou d’articles <br>
 - Publier des critiques de livres ou d’articles <br>
 <br>
+
 > [!NOTE]
 > Testé sous Ubuntu 24.04 - Python 3.12.3 - Navigateurs Google Chrome et Mozilla Firefox
 
