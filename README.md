@@ -96,11 +96,11 @@ L'utilisateur a la possibilité de :
 <br><br>
 
 > [!NOTE]
-> L'application est fournie avec une base de données contenant les informations suivantes :
-> 3 utilisateurs : AdminDatabase - JeanDupont - JulieTellier
-> Les mots de passe de ces utilisateurs sont : DefaultPassword
-> Seul l'utilisateur AdminDatabase a les droits "superuser"
-> Des critiques et des demandes de critiques sont également présents
+> L'application est fournie avec une base de données contenant les informations suivantes : <br>
+> 3 utilisateurs : AdminDatabase - JeanDupont - JulieTellier <br>
+> Les mots de passe de ces utilisateurs sont : DefaultPassword <br>
+> Seul l'utilisateur AdminDatabase a les droits "superuser" <br>
+> Des critiques et des demandes de critiques sont également présents <br>
 
 ## Générer un rapport avec flake8-html
 
