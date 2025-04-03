@@ -102,7 +102,7 @@ L'utilisateur a la possibilité de :
 > - Seul l'utilisateur AdminDatabase a les droits "superuser" <br>
 > - Des critiques et des demandes de critiques sont également présents <br>
 
-## Générer un rapport avec flake8-html
+## Générer un rapport avec flake8
 
 Il est possible de générer un rapport avec flake8<br>
 Pour ceci, entrez les commandes suivante depuis le répertoire où vous avez installé l'environnement virtuel :<br>
