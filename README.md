@@ -76,13 +76,13 @@ Dans la barre d'adresse de votre navigateur, tapez <br>
 
 ## Fonctionnement du programme
 
-L'application comporte différentes sections<br>
+L'application comporte différentes sections :<br>
 <br>
-Une page de connexion<br>
-Une page d'inscription<br>
-Une page d'affichage du flux personnalisé<br>
-Une page d'affichage des publications de l'utilisateur<br>
-Une page de gestion des abonnements et des abonnés de l'utilisateur<br>
+- Une page de connexion<br>
+- Une page d'inscription<br>
+- Une page d'affichage du flux personnalisé<br>
+- Une page d'affichage des publications de l'utilisateur<br>
+- Une page de gestion des abonnements et des abonnés de l'utilisateur<br>
 <br><br>
 L'utilisateur a la possibilité de :
 - Se connecter / se déconnecter
