@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="fr">
+    <head>
+        <title>LITrevu</title>
+    </head>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <link rel="icon" href="{% static 'images/logo-white.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'UserAccounts/UserAccounts-styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'UserProfile/UserProfile-styles.css' %}"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
+    <body>
+        <!-- #1 -->
+        <!-- Bloc permettant l'affichage des fenêtres modales -->
+        <div id="modal-window" class="hidden-modal-window">
+            <div class="contener-modal">
+                <img id="modal-image" src="{% static 'images/logo.png' %}" alt="Image fenêtre modale">
+                <h1 id="modal-title">Titre modale</h1>
+                <p id="modal-infos"></p>
+
+                <div class="flex-row-button">
+                    <!-- Ajouter un bouton ici pour personnaliser la fenêtre modale -->
+                    <!-- Ajuster également le fichier script.js pour gérer le nouveau cas -->
+                    <!-- Un bouton de type lien <a> est nécessaire pour rediriger vers un url spécifique -->
+                    <a id="logout-button-modal" class="hidden" href="{% url 'logout' %}" onclick="close_modal_window()">Oui</a>
+                    <a id="cancel-ticket-button-modal" class="hidden" href="{% url 'flux' %}" onclick="close_modal_window()">Oui</a>
+                    <a id="cancel-subscription-button-modal" class="hidden" href="{% url 'auth' %}" onclick="close_modal_window()">Oui</a>
+                    
+                    <form id="validation-form" action="" method="post" novalidate>
+                        {% csrf_token %}
+
+                        <!-- Le bouton de type <button> est nécessaire pour passer des informations à la vue -->
+                        <!-- Les données personnalisées sont ajoutées ici par script.js pour adapter le bouton au contexte -->
+                        <button id="validation_button" 
+                        class="button modal-button" type="submit" 
+                        onclick="close_modal_window()">Oui</button>
+                    
+                    </form>
+                    <button class="button modal-button" onclick="close_modal_window()">Non</button>
+                </div>
+            </div>
+        </div>
+        <!-- #1 Fin de bloc -->
+
+
+        {% if user.is_authenticated %}
+            <div class="fixed-elements">
+        {% else %}
+            <div class="fixed-elements height5">
+        {% endif %}
+
+
+        <!-- #2 -->
+        <!-- Bloc permettant l'affichage du logo, du titre et du nom d'utilisateur -->
+        <header>
+            <div class="contener-logo">
+                <img class="img-logo" src="{% static 'images/logo.png' %}" alt="Logo LITrevu">
+            </div>
+            <h1 class="title">LITrevu</h1>
+            
+            <div class="base-user-area">
+                <div class="user-account">
+                    {% if user.is_authenticated %}
+                        <p class="base-username">{{ user.first_name }} {{ user.last_name }}</p>
+
+                        <img class="base-logo-user" 
+                        src="{% static 'UserAccounts/images/user-black.png' %}" 
+                        alt="Image Utilisateur">
+                    
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+        <!-- #2 Fin de bloc -->
+
+
+        <!-- #3 -->
+        <!-- Bloc permettant l'affichage de la barre de navigation -->
+        {% if user.is_authenticated %}
+            <div class="base-nav-contener">
+                <nav class="base-nav">
+                    {% if request.resolver_match.url_name == "flux" %}
+                        <a class="button base-button base-selected-button" href="{% url 'flux' %}">Flux</a>
+                    {% else %}
+                        <a class="button base-button" href="{% url 'flux' %}">Flux</a>
+                    {% endif %}
+
+                    {% if request.resolver_match.url_name == "posts" %}
+                        <a class="button base-button base-selected-button" href="{% url 'posts' %}">Posts</a>
+                    {% else %}
+                        <a class="button base-button" href="{% url 'posts' %}">Posts</a>
+                    {% endif %}
+
+                    {% if request.resolver_match.url_name == "subscriptions" %}
+                        <a class="button base-button base-selected-button" href="{% url 'subscriptions' %}">Abonnements</a>
+                    {% else %}
+                        <a class="button base-button" href="{% url 'subscriptions' %}">Abonnements</a>
+                    {% endif %}
+
+                    <button id="logout-button" 
+                        class="button base-button base-logout" 
+                        data-title="Déconnexion" 
+                        data-logouturl="{% url 'logout' %}" 
+                        data-image="{% static 'images/logout.png' %}" 
+                        data-message="Souhaitez-vous fermer la session en cours ?" 
+                        onclick="open_modal_window(this.dataset.title, this.dataset.logouturl, this.dataset.image, this.dataset.message)">Déconnexion</button>
+                </nav>
+            </div>
+        {% endif %}
+        <!-- #3 Fin de bloc -->
+    </div>
+
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+
+        <footer>
+            <p class="copyright">&copy; 2025 Guillaume Gillon - Tous droits réservés.</p>
+            <p>Les images sont fournies par <a href="https://fr.freepik.com/">Freepik</a></p>
+            <p>Les icones sont fournies par <a href="https://icones8.fr/">Icones8</a></p>
+        </footer>
+    </body>
+</html>

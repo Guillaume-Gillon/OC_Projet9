@@ -1,0 +1,98 @@
+.useraccounts-contener {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20rem;
+}
+
+.useraccounts-inscription-contener {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.useraccounts-inscription-contener h1 {
+    font-family: "oswald";
+    letter-spacing: 0.1rem;
+    font-weight: 100;
+    font-size: 3rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.useraccounts-checkbox-contener {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 20rem;
+    margin-bottom: 1rem;
+}
+
+.useraccounts-checkbox-label {
+    width: 14rem;
+    text-align: left;
+}
+
+#useraccounts-checkbox-login, #useraccounts-checkbox-register {
+    width: 1.2rem;
+}
+
+#useraccounts-checkbox:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.useraccounts-button-contener {
+    display: flex;
+    gap: 2rem;
+}
+
+.useraccounts-error {
+    padding: 0;
+    margin: 0;
+    margin: 0.2rem;
+    padding-top: 0;
+    padding-bottom: 0.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    list-style-type: none;
+}
+
+.useraccounts-red {
+    color: orange;
+    font-weight: 500;
+}
+
+.useraccounts-return {
+    margin: 0;
+    padding: 0;
+}
+
+.useraccounts-waiting-contener {
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #dfc8b3;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    border: solid 1px;
+    border-color: #dfc8b3;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.useraccounts-waiting-contener h2 {
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+.useraccounts-waiting-contener p {
+    margin: 0;
+    padding: 0;
+}

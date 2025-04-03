@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="userprofile-contener">
+        <div class="form-contener width90 relative">
+            <img src="{% static 'UserProfile/images/ticket.png' %}" alt="Ticket">
+
+            
+            <!-- Si une critique est créée en réponse à un ticket -->
+            {% if ticket.title and review_form %}
+                <div class="userprofile-username-ticket">
+                    {% if request.user == ticket.user %}
+                        <p>Vous répondez à votre propre demande</p>
+                    {% else %}
+                        <p>Vous répondez à {{ ticket.user }}</p>
+                    {% endif %}
+                    <p>Demande postée le {{ ticket.time_created|date:"d/m/Y" }} à {{ ticket.time_created|date:"H:i" }}</p>
+                </div>
+                    <h2>Créer une critique en réponse à une demande</h2>
+            
+            <!-- Sinon si un ticket existe -->
+            {% elif ticket.title %}
+                <h2>Modifier votre demande de critique</h2>
+            
+            <!-- Sinon si la vue new_review est exécutée -->
+            {% elif request.path == "/new-review/" %}
+                <h2>Créer une nouvelle critique</h2>
+            
+            {% else %}
+                <h2>Demander une critique</h2>
+            {% endif %}
+            
+            <!-- Affichage de l'image du ticket si elle existe, sinon affichage d'une image générique -->
+            <div class="userprofile-ticket-image-contener">
+                {% if ticket.document %}
+                    <img class="downloaded-image" src="{{ ticket.document.url }}" alt="Couverture de livre">
+                {% else %}
+                    <img src="{% static 'UserProfile/images/ticket2.png' %}" alt="Ticket">
+                {% endif %}
+            </div>
+            
+            <form class="form" enctype="multipart/form-data" action="" method="post" novalidate>
+                {% csrf_token %}
+
+                <!-- Si une critique est créée/modifiée en réponse à un ticket, on affiche uniquement le titre et la description -->
+                {% if ticket.title and review_form %}
+                    <div class="userprofile-fields-locked">
+                        <p>{{ ticket_form.title.label }}</p>
+                        <p class="userprofile-input-title-locked">{{ ticket_form.title }}</p>
+                        <p>{{ ticket_form.description.label }}</p>
+                        <p class="userprofile-input-description-locked input">{{ ticket_form.description }}</p>
+                    </div>
+
+                <!-- Sinon affichage du formulaire complet et du compteur de caractères -->
+                {% else %}
+                    <div class="userprofile-fields">
+                        <p>{{ ticket_form.title.label }}</p>
+                        <p class="userprofile-input-title">{{ ticket_form.title }}</p>
+                        <p>{{ ticket_form.description.label }}</p>
+                        <p class="userprofile-input-description input">{{ ticket_form.description }}</p>
+                        <p id="counter"></p>
+                        <p>Image (.jpg - .png - .bmp  ...)</p>
+                        {{ ticket_form.document }}
+                        <label for="id_document" class="button">Télécharger un fichier</label>
+                        <p id="file-name"></p>
+                    </div>
+                {% endif %}
+                
+                <!-- Le bloc "review" est codé dans new-review.html -->
+                {% if review_form %}
+                    {% block review %}{% endblock review %}
+                {% endif %}
+
+                <div class="flex-row-button">
+                    
+                    <!-- Affichage des boutons d'annulation et d'envoi -->
+                    <button id="cancel-ticket-button" 
+                        class="button width8"
+                        type="button"  
+                        data-title="Annuler la saisie" 
+                        data-logouturl="{% url 'posts' %}" 
+                        data-image="{% static 'images/question3.png' %}" 
+                        data-message="Souhaitez-vous annuler la saisie ?" 
+                        onclick="open_modal_window(this.dataset.title, this.dataset.logouturl, this.dataset.image, this.dataset.message)">Annuler</button>
+                    
+                        <button class="button width8" type="submit">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Code JS permettant l'affichage et l'actualisation du compteur de caractères -->
+    <script>
+        const textarea = document.getElementById("id_description");
+        const counter = document.getElementById("counter");
+        const max_length = textarea.getAttribute("maxlength");
+
+        textarea.addEventListener('input', function() {
+            const length = textarea.value.length;
+            counter.textContent = length + " / " + max_length + " caractères.";
+        });
+        document.getElementById("id_document").addEventListener("change", function(event) {
+            const file_name = event.target.files[0].name;
+            document.getElementById("file-name").textContent = file_name;
+        });
+    </script>
+{% endblock %}

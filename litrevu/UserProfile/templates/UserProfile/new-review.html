@@ -1,0 +1,30 @@
+<!-- Affichage du formulaire pour la création/modification de critique -->
+
+{% extends "UserProfile/new-ticket.html" %}
+{% load static %}
+
+{% block review %}
+
+    <div class="userprofile-review-container">
+        <h2>Votre critique</h2>
+        <div class="userprofile-fields">
+            <p>{{ review_form.headline.label }}</p>
+            <p class="userprofile-input-title">{{ review_form.headline }}</p>
+            <p>{{ review_form.body.label }}</p>
+            <p class="userprofile-input-description input">{{ review_form.body }}</p>
+            <p id="counter"></p>
+
+            <p>Choisissez une note</p>
+            <div class="userprofile-radio-contener">
+                {% for element in review_form.rating %}
+                    <div class="userprofile-radio-img-contener">
+                        <div class="userprofile-button-radio-contener">
+                            {{ element }}
+                        </div>
+                        <img class="userprofile-rating-img" src="{% static 'UserProfile/images/full-star-2.png' %}" alt="Etoile">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

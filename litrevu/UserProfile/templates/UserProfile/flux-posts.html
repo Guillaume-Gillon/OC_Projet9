@@ -1,0 +1,111 @@
+<!--
+
+Gabarit utilisé pour afficher les sections "flux" et "posts".
+ 
+Liste des noms de blocs :
+#0 : Ce bloc permet l'affichage de la zone fixe située à gauche de la page "flux"
+#1 : Ce bloc permet l'affichage des tickets
+#2 : Ce bloc permet l'affichage des critiques
+#3 : Fermeture de balise <div> ouverte au bloc #1 + Affichage des boutons "Modifier" et "Supprimer" la critique
+
+-->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <!-- #0 -->
+    <!-- Si l'affichage de la page "flux" est demandé, alors ce bloc est exécuté -->
+    <!-- Ce bloc permet l'affichage de la zone fixe située à gauche de la page "flux" -->
+    {% if request.resolver_match.url_name == "flux" %}
+        <div class="userprofile-button-contener">
+            <img src="{% static 'UserProfile/images/ticket.png' %}" alt="Ticket">
+            <a class="button width15" href="{% url 'new_ticket' %}">Demander une critique</a>
+            <a class="button width15" href="{% url 'new_review' %}">Créer une critique</a>
+        </div>
+    {% endif %}
+    <!-- #0 Fin de section -->
+
+    <div class="userprofile-contener">
+        {% if elements %}
+            {% for element in elements %}
+                
+                <!-- #1 -->
+                <!-- Si l'élément est un ticket, ce bloc est exécuté -->
+                <!-- Ce bloc permet l'affichage des tickets -->
+                {% if element.title %}
+                    {% with into_review=False %}
+                        {% include "UserProfile/ticket.html" %}
+                    {% endwith %}
+                <!-- #1 Fin de section -->
+
+
+                <!-- #2 -->
+                <!-- Si l'élément est une critique, alors ce bloc est exécuté -->
+                <!-- Ce bloc permet l'affichage des critiques -->
+                {% elif element.headline %}
+                    <div id="userprofile-review-contener" class="userprofile-review-contener"> <!-- balise de style fermée au bloc #3 -->
+                        {% if element.user == user %}
+                            <p class="userprofile-details-review">Vous avez publié cette critique le {{ element.time_created|date:"d/m/Y" }} à {{ element.time_created|date:"H:i" }}.</p>
+                        {% elif element.user %}
+                            <p class="userprofile-details-review">Critique publiée par {{ element.user }} le {{ element.time_created|date:"d/m/Y" }} à {{ element.time_created|date:"H:i" }}.</p>
+                        {% endif %}
+                        {% if element.time_modified %}
+                            <p class="userprofile-details-review">Modifié le {{ element.time_modified|date:"d/m/Y" }} à {{ element.time_modified|date:"H:i" }}.</p>
+                        {% endif %}
+                        <div class="userprofile-review-title">
+                            <p>
+                                {% for star in element.nb_stars %}
+                                    <img class="userprofile-rating-img" src="{% static 'UserProfile/images/full-star-2.png' %}" alt="Etoile">
+                                {% endfor %}
+                                {% for star in element.nb_empty_stars %}
+                                    <img class="userprofile-rating-img" src="{% static 'UserProfile/images/empty-star.png' %}" alt="Etoile">
+                                {% endfor %}
+                            </p>
+                            <p>-</p>
+                            <p>{{ element.headline }}</p>
+                        </div>
+                        <p class="userprofile-review-body">{{ element.body }}</p>
+                        <div id="userprofile-centered-ticket" class="userprofile-center">
+                            
+                            {% with element=element.ticket into_review=True %}
+                                {% include "UserProfile/ticket.html" %}
+                            {% endwith %}
+
+                        </div>
+                    <!-- #2 Fin de section -->
+
+
+                    <!-- #3 (bloc lié à #1) -->
+                    <!-- Si le ticket a reçu une réponse, ce bloc est exécuté -->
+                    <!-- Fermeture de balise <div> ouverte au bloc #1 + Affichage des boutons "Modifier" et "Supprimer" la critique -->
+                    {% if request.resolver_match.url_name == "posts" and element.headline %}
+                        <div class="userprofile-centered-button">
+                            <form action="" method="post" novalidate>
+                                {% csrf_token %}
+                                <button class="button width8" name="modify_review_button" value="{{ element.id }}" type="submit">Modifier</button>
+                            </form>
+                            
+                            <button id="userprofile-delete-review" 
+                                class="button width8" 
+                                data-title="Supprimer la critique" 
+                                data-reviewid="{{ element.id }}" 
+                                data-image="{% static 'images/question3.png' %}" 
+                                data-message="Souhaitez-vous supprimer la critique en réponse à '{{ element.ticket.title }}' ?" 
+                                onclick="open_modal_window(this.dataset.title, this.dataset.reviewid, this.dataset.image, this.dataset.message)">Supprimer</button>
+                        </div>
+                    {% endif %}
+
+                    </div> <!-- id="userprofile-review-contener"-->
+                {% endif %}
+                <!-- #3 Fin de section -->
+
+            {% endfor %}
+
+
+        {% else %}
+            <h2>Aucun élément à afficher</h2>
+        {% endif %}
+    </div>
+{% endblock %}

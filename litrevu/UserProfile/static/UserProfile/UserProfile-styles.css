@@ -1,0 +1,417 @@
+.userprofile-searching-button {
+    height: 2rem;
+}
+
+.userprofile-contener {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.width5-5 {
+    width: 5.5rem;
+}
+
+.width8 {
+    width: 8rem;
+}
+
+.width15 {
+    width: 15rem;
+}
+
+.width90 {
+    width: 90rem;
+}
+
+.relative {
+    position: relative;
+}
+
+.userprofile-suscription-subscribers-contener{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.subs-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+}
+
+.subs-form input {
+    width: 20rem;
+    height: 2.2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #f9faec;
+}
+
+.subs-form-error {
+    color: #f9faec;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.userprofile-subs-contener {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    width: 30rem;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    border: solid 1px black;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #f9faec;
+    box-shadow: 0 0 20px 1px #dfc8b3;
+}
+
+.userprofile-subs-contener h2 {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+
+.userprofile-subs-contener p {
+    text-align: center;
+    max-width: 95%;
+    margin-top: 0.1rem;
+    margin-bottom: 0;
+}
+
+.userprofile-subs-users {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    gap: 1rem;
+    font-size: 1.4rem;
+}
+
+.userprofile-unsubscribe-button {
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+.userprofile-unsubscribe-button:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.6);
+}
+
+.userprofile-unlock-button {
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+.userprofile-unlock-button:hover {
+    box-shadow: 0 0 15px 5px #5bb4637e;
+}
+
+.userprofile-no-subs {
+    min-width: 100%;
+    font-size: 1.3rem;
+    font-weight: 100;
+}
+
+.userprofile-username-ticket {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.userprofile-input-title input {
+    width: 65rem;
+    font-family: "ubuntu";
+    font-size: 1.4rem;
+    font-weight: 500;
+    background-color: #f9faec;
+}
+
+.userprofile-input-title-locked input {
+    width: 65rem;
+    font-family: "ubuntu";
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #f9faec;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    border: none;
+}
+
+.userprofile-input-title-locked input:focus {
+    border: none;
+    outline: none;
+}
+
+.userprofile-input-description textarea {
+    width: 80rem;
+    height: 15rem;
+    border-radius: 1rem;
+    border: none;
+    padding-left: 1rem;
+    font-family: "ubuntu";
+    font-size: 1.2rem;
+    background-color: #f9faec;
+    resize: none;
+}
+
+.userprofile-input-description-locked textarea {
+    width: 80rem;
+    height: 15rem;
+    padding-left: 1rem;
+    font-family: "ubuntu";
+    font-size: 1.2rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: #f9faec;
+    resize: none;
+    box-shadow: none;
+    border: none;
+
+
+}
+
+.userprofile-input-description-locked textarea:focus {
+    border: none;
+    outline: none;
+}
+
+.userprofile-fields {
+    justify-content: flex-start;
+}
+
+.userprofile-fields-locked {
+    padding: 1rem;
+    justify-content: flex-start;
+    border: solid 1px #dfc8b3;
+    border-radius: 1rem;
+}
+
+#counter {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
+#file-name {
+    margin-top: 1rem;
+}
+
+.userprofile-review-contener {
+    border: solid 1px #dfc8b3;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #f9faec;
+    width: 45rem;
+    font-size: 1.2rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 1200px) {
+    .userprofile-review-contener {
+        max-width: 30rem;
+        padding: 1rem;
+    }
+}
+
+.userprofile-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.userprofile-ticket-contener {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: solid 1px #dfc8b3;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #f9faec;
+    width: 45rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 1200px) {
+    .userprofile-ticket-contener {
+        max-width: 30rem;
+        padding: 1rem;
+    }
+}
+
+.userprofile-button-contener {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 12.5rem;
+    gap: 2rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    border: solid 1px;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #dfc8b3;
+    width: 20rem;
+}
+
+@media (max-width: 1600px) {
+    .userprofile-button-contener {
+        width: 10rem;
+    }
+
+    .width15 {
+        width: 5rem;
+    }
+}
+
+.userprofile-ticket-image-contener {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.downloaded-image {
+    width: 8rem;
+    border: solid 1px #dfc8b3;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px 1px #dfc8b3;
+    
+}
+
+.userprofile-details-review {
+    font-size: 1rem;
+    margin-top: 0;
+    padding-top: 0;
+    width: 100%;
+    text-align: right;
+}
+
+.userprofile-review-title {
+    display: flex;
+    align-content: center;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.userprofile-review-body {
+    background-color: #f9faec;
+    color: black;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+}
+
+.userprofile-details-ticket {
+    font-size: 1rem;
+    margin-top: 0;
+    padding-top: 0;
+    max-width: 25rem;
+}
+
+.userprofile-ticket-title {
+    margin: 0;
+    margin-top: 3rem;
+    padding: 0;
+    max-width: 20rem;
+}
+
+.userprofile-ticket-description {
+    width: 43rem;
+    border: solid 1px;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 6rem;
+    background-color: #f9faec;
+    color: black;
+}
+
+@media (max-width: 1600px) {
+    .userprofile-ticket-description {
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+}
+
+.userprofile-centered-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.userprofile-review-container {
+    padding-top: 2rem;
+}
+
+.userprofile-rating-img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.userprofile-radio-contener {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
+
+.userprofile-radio-img-contener {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    width: 10rem;
+}
+
+.userprofile-radio-img-contener img {
+    width: 1.3rem;
+    padding-bottom: 0.2rem;
+}
+
+.userprofile-button-radio-contener {
+    display: flex;
+    flex-direction: row;
+}
+
+.userprofile-radio-contener label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 3rem;
+}
+
+.userprofile-radio-contener input {
+    width: 1.2rem;
+}

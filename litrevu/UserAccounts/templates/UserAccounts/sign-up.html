@@ -1,0 +1,114 @@
+<!-- Affichage du formulaire d'inscription -->
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="useraccounts-contener">
+
+        <div class="form-contener">
+            <img src="{% static 'UserAccounts/images/pen.png' %}" alt="stylo">
+            <h2>Inscription</h2>
+            <form class="form" action="" method="post" novalidate>
+                {% csrf_token %}
+                <p>
+                    <label for="{{ form.username.id_for_label }}">Utilisateur</label>
+                    {{ form.username }}
+
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            <p class="useraccounts-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+                <p>
+                    <label for="{{ form.last_name.id_for_label }}">Nom</label>
+                    {{ form.last_name }}
+
+                    {% if form.last_name.errors %}
+                        {% for error in form.last_name.errors %}
+                            <p class="useraccounts-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>  
+                <p>
+                    <label for="{{ form.first_name.id_for_label }}">Prénom</label>
+                    {{ form.first_name }}
+
+                    {% if form.first_name.errors %}
+                        {% for error in form.first_name.errors %}
+                            <p class="useraccounts-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>  
+                <p>
+                    <label for="{{ form.email.id_for_label }}">Email</label>
+                    {{ form.email }}
+
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <p class="useraccounts-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>  
+                <p>
+                    <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <p class="useraccounts-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+                <p>
+                    <label for="{{ form.password_confirmation.id_for_label }}">Confirmer mot de passe</label>
+                    {{ form.password_confirmation }}
+                    {% if form.password_confirmation.errors %}
+                        {% for error in form.password_confirmation.errors %}
+                            <p class="useraccounts-error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+
+                <div class="useraccounts-checkbox-contener">
+                    <label for="useraccounts-checkbox-register" class="useraccounts-checkbox-label">Afficher le mot de passe</label>
+                    <input id="useraccounts-checkbox-register" type="checkbox">
+                </div>
+                <div class="useraccounts-button-contener">
+                    <a id="cancel-subscription-button" 
+                        class="button" 
+                        data-title="Annuler l'inscription" 
+                        data-logouturl="{% url 'auth' %}" 
+                        data-image="{% static 'images/question3.png' %}" 
+                        data-message="Souhaitez-vous annuler l'inscription ?" 
+                        onclick="open_modal_window(this.dataset.title, this.dataset.logouturl, this.dataset.image, this.dataset.message)">Retour</a>
+                    <button class="button" type="submit">Valider</button>
+                </div>
+                {% if form.non_field_errors %}
+                    <ul class="useraccounts-error">
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </form>
+
+            <!-- Script JS permettant de modifier l'affichage du mot de passe -->
+            <script>
+                const password = document.getElementById('{{ form.password.id_for_label }}');
+                const password_confirmation = document.getElementById('{{ form.password_confirmation.id_for_label }}');
+                const displayPassword = document.getElementById('useraccounts-checkbox-register');
+            
+                displayPassword.addEventListener('change', function() {
+                    if (this.checked) {
+                        password.type = 'text';
+                        password_confirmation.type = 'text';
+                    } else {
+                        password.type = 'password';
+                        password_confirmation.type = 'password';
+                    }
+                });
+            </script>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,316 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../images/wallpaper.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "ubuntu";
+    min-height: 98vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 97vw;
+    height: 5rem;
+    z-index: 10;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.display-modal-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    background-color: #000000b4;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.contener-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9faec;
+    padding: 3rem;
+    border-radius: 3rem;
+    border: solid 2px #83746f;
+    font-size: 1.2rem;
+}
+
+.flex-row-button {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+.hidden-modal-window {
+    display: none;
+}
+
+#modal-infos {
+    font-size: 1.4rem;
+}
+
+main {
+    flex: 1;
+    margin-top: 12rem;
+  }
+
+.contener-logo {
+    width: 33%;
+  }
+
+.img-logo {
+    max-height: 3rem;
+    max-width: 3rem;
+    border-radius: 3rem;
+}
+
+.title {
+    font-size: 3.5rem;
+}
+
+.user-account {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 40rem;
+}
+
+.base-username {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.base-logo-user {
+    max-width: 3rem;
+    max-height: 3rem;
+    position: relative;
+    border-radius: 3rem;
+}
+
+.base-user-area {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 33%;
+
+}
+
+.base-nav-contener {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    position: fixed;
+    top: 6rem;
+    right: 0;
+    width: 98vw;
+    z-index: 10;
+    
+}
+
+.fixed-elements {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 10rem;
+    z-index: 10;
+    background-image: url("../images/wallpaper.jpg");
+    background-size: cover;
+}
+
+.height5 {
+    height: 5rem;
+}
+
+.base-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.button {
+    background-color: #dfc8b3;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    font-family: "ubuntu";
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.button:hover {
+    outline: solid 1px;
+    outline-color: white;
+    box-shadow: 0 0 10px 3px #dfc8b3;
+    cursor: pointer;
+}
+
+.base-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px;
+    border-color: #83746f;
+    width: 6rem;
+    text-align: center;
+}
+
+.base-selected-button {
+    background-color: #f9faec;
+    pointer-events : none;
+}
+
+.modal-button {
+    width: 6rem;
+}
+
+.modal-button-a {
+    width: 3.5rem;
+}
+
+#logout-button-modal a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+}
+
+.base-logout {
+    min-width: 8.5rem;
+    background-color: #cb9a77;
+    border-color: black;
+}
+
+.base-logout:hover {
+    box-shadow: 0 0 10px 0px rgba(255, 0, 0, 0.6);
+    outline: none;
+}
+
+.form p {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+label {
+    width: 8rem;
+    text-align: right;
+}
+
+input {
+    height: 2rem;
+    width: 17rem;
+    border-radius: 1rem;
+    border: none;
+    padding-left: 1rem;
+    font-size: 1rem;
+    font-family: "ubuntu";
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: solid 1px;
+    outline-color: #b3a090;
+    box-shadow: 0 0 5px 1px #dfc8b3;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-contener {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #dfc8b3;
+    width: 30rem;
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.form-contener h2 {
+    padding-bottom: 1rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    margin-bottom: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #dfc8b3;
+    border-radius: 5rem;
+}
+
+footer p {
+    padding: 0;
+    padding-bottom: 0.3rem;
+    margin: 0;
+}
+
+footer a {
+    color: #cb9a77;
+}
+
+.copyright {
+    padding-bottom: 0.6rem;
+}

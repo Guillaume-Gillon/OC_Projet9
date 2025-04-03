@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="userprofile-contener">
+        <div class="form-contener width90">
+            <img src="{% static 'UserProfile/images/check.png' %}" alt="Validation">
+            <h1>Opération réalisée avec succès !</h1>
+            <p>Vous allez être redirigé dans <span id="userprofile-counter">6</span> secondes...</p>
+        </div>
+    </div>
+
+    <script>         
+        var count = 6;
+        var countElement = document.getElementById("userprofile-counter");
+
+        function updateCounter() {
+            count--;
+
+            if (count >= 0) {
+                countElement.textContent = count;
+            }
+
+            /* window.location.href contient l'url de la page actuelle.
+            En modifiant ce paramètre, le navigateur redirige l'utilisateur vers la cible */
+            if (count <= 0) {
+                window.location.href = "{% url 'flux' %}";
+            /* La fonction est exécutée toutes les secondes */
+            } else {
+                setTimeout(updateCounter, 1000);
+            }
+        }
+
+        updateCounter();
+    </script>
+{% endblock %}

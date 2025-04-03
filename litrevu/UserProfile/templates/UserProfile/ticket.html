@@ -1,0 +1,78 @@
+<!--
+
+Gabarit utilisé dans "flux-posts.html" pour afficher les tickets.
+ 
+Liste des noms de blocs :
+#0 : Ce bloc affiche les éléments du ticket
+#1 : Ce bloc permet l'affichage des boutons "Modifier" et "Supprimer" affectés au ticket
+#2 : Ce bloc permet l'affichage du bouton "Créer une critique" affiché au ticket lorsque le ticket n'as pas eu de réponse
+#3 : Fermeture des balises <div> de #0 et #1
+
+-->
+
+
+{% load static %}
+
+<!-- #0 -->
+<!-- Ce bloc affiche les éléments du ticket -->
+<div id="userprofile-ticket-contener" class="userprofile-ticket-contener">
+    <div class="userprofile-ticket-image-contener">
+        {% if element.document %}
+            <img class="downloaded-image" src="{{ element.document.url }}" alt="Couverture de livre">
+        {% else %}
+            <img src="{% static 'UserProfile/images/ticket2.png' %}" alt="Ticket">
+        {% endif %}
+    </div>
+    {% if element.user == user %}
+        <p class="userprofile-details-ticket">Vous avez publié cette demande le {{ element.time_created|date:"d/m/Y" }} à {{ element.time_created|date:"H:i" }}.</p>
+    {% else %}
+        <p class="userprofile-details-ticket">Demande publiée par {{ element.user }} le {{ element.time_created|date:"d/m/Y" }} à {{ element.time_created|date:"H:i" }}.</p>
+    {% endif %}
+    {% if element.time_modified %}
+        <p class="userprofile-details-ticket">Modifié le {{ element.time_modified|date:"d/m/Y" }} à {{ element.time_modified|date:"H:i" }}.</p>
+    {% endif %}
+
+    <h2 class="userprofile-ticket-title">{{ element.title }}</h2>
+    <p class="userprofile-ticket-description">{{ element.description }}</p>
+    <!-- #0 Fin de section -->
+
+
+    <!-- #1 -->
+    <!-- Si l'affichage de la page "posts" est demandé et que le ticket n'est pas affiché dans une critique, alors ce bloc est exécuté -->
+    <!-- Ce bloc permet l'affichage des boutons "Modifier" et "Supprimer" affectés au ticket -->
+    <div id="" class="userprofile-centered-button">
+        {% if request.resolver_match.url_name == "posts" and not into_review %}
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                <button class="button width8" name="modify_ticket_button" value="{{ element.id }}" type="submit">Modifier</button>
+            </form>
+            
+            <button id="userprofile-delete-ticket" 
+                class="button width8" 
+                data-title="Supprimer le ticket" 
+                data-ticketid="{{ element.id }}" 
+                data-image="{% static 'images/question3.png' %}" 
+                data-message="Souhaitez-vous supprimer le ticket '{{ element.title }}' ?" 
+                onclick="open_modal_window(this.dataset.title, this.dataset.ticketid, this.dataset.image, this.dataset.message)">Supprimer</button>
+    <!-- #1 Fin de section -->
+
+
+        <!-- #2 -->
+        <!-- Sinon, si l'affichage de la page "flux" est demandé et que le bloc n'est pas affiché dans une critique alors ce bloc est exécuté -->
+        <!-- Ce bloc permet l'affichage du bouton "Créer une critique" affiché au ticket lorsque le ticket n'as pas eu de réponse -->
+        {% elif request.resolver_match.url_name == "flux" and not into_review %}
+            {% if element.title and not element.review_set.exists %}
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    <button class="button width8" name="create_review_button" value="{{ element.id }}" type="submit">Créer une critique</button>
+                </form>
+            {% endif %}
+        {% endif %}
+        <!-- #2 Fin de section -->
+    
+
+    <!-- #3 -->
+    <!-- Fermeture des balises <div> de #0 et #1 -->
+    </div>
+</div>
+<!-- #3 Fin de section -->

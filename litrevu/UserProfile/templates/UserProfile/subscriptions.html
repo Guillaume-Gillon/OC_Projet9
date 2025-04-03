@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="userprofile-contener">
+        <!-- Affichage du formulaire de recherche d'utilisateurs -->
+        <div class="form-contener width40">
+            <img src="{% static 'UserProfile/images/find.png' %}" alt="utilisateur">
+            <h2>Rechercher d'autres utilisateurs</h2>
+
+            <form class="subs-form" action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ searching_form.username }}
+                <button class="button" type="submit">S'abonner</button> 
+            </form>
+            {% if user_error %}
+                <p class="subs-form-error">{{ user_error }}</p>
+            {% endif %}   
+        </div>
+
+        <div class="userprofile-suscription-subscribers-contener">
+            <!-- Affichage de la liste des abonnements de l'utilisateur -->
+            <div class="userprofile-subs-contener">
+                <img src="{% static 'UserProfile/images/subscriptions.png' %}" alt="utilisateur">
+                <h2>Vos abonnements</h2>
+                <div>
+                    {% if user.subscriptions.all %}
+                        {% for subscription in user.subscriptions.all %}
+                            <div class="userprofile-subs-users">
+
+                                <img class="userprofile-unsubscribe-button"
+                                src="{% static 'UserProfile/images/unsubscribe.png' %}"
+                                alt="Bouton annuler abonnement"
+                                data-title="Annuler l'abonnement" 
+                                data-subscriptionid="{{ subscription.id }}" 
+                                data-image="{% static 'images/exclamation3.png' %}" 
+                                data-message="Souhaitez-vous annuler l'abonnement à {{ subscription.username }} ?" 
+                                onclick="open_modal_window(this.dataset.title, this.dataset.subscriptionid, this.dataset.image, this.dataset.message)">
+                                
+                                <p>{{ subscription.username }}</p>
+                            </div>
+                            
+                        {% endfor %}
+                    {% else %}
+                        <p class="userprofile-no-subs">Vous n'avez aucun abonnement.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Affichage de la liste des abonnés à l'utilisateur -->
+            <div class="userprofile-subs-contener">
+                <img src="{% static 'UserProfile/images/subscribers.png' %}" alt="utilisateur">
+                <h2>Vos abonnés</h2>
+
+                {% if user.subscribers.all %}
+                    {% for subscriber in user.subscribers.all %}
+                        <div class="userprofile-subs-users">
+
+                            <img class="userprofile-unsubscribe-button"
+                            src="{% static 'UserProfile/images/lock-user.png' %}"
+                            alt="Bouton bloquer l'utilisateur"
+                            data-title="Bloquer l'utilisateur" 
+                            data-subscriberid="{{ subscriber.id }}" 
+                            data-image="{% static 'images/exclamation3.png' %}" 
+                            data-message="Souhaitez-vous bloquer {{ subscriber.username }} ?" 
+                            onclick="open_modal_window(this.dataset.title, this.dataset.subscriberid, this.dataset.image, this.dataset.message)">
+
+                            <p>{{ subscriber.username }}</p>
+                        </div>
+
+                    {% endfor %}
+                {% else %}
+                    <p class="userprofile-no-subs">Vous n'avez pas encore d'abonné.</p>
+                {% endif %}
+
+            </div>
+
+            <!-- Affichage de la liste des utilisateurs bloqués -->
+            <div class="userprofile-subs-contener">
+                <img src="{% static 'UserProfile/images/locked-users.png' %}" alt="utilisateur">
+                <h2>Utilisateurs bloqués</h2>
+
+                {% if user.locked_users %}
+                    {% for locked_user in user.locked_users %}
+                        <div class="userprofile-subs-users">
+
+                            <img class="userprofile-unlock-button"
+                            src="{% static 'UserProfile/images/unlock-user.png' %}"
+                            alt="Bouton débloquer l'utilisateur"
+                            data-title="Débloquer l'utilisateur" 
+                            data-username="{{ locked_user }}" 
+                            data-image="{% static 'images/question3.png' %}" 
+                            data-message="Souhaitez-vous débloquer {{ locked_user }} ?" 
+                            onclick="open_modal_window(this.dataset.title, this.dataset.username, this.dataset.image, this.dataset.message)">
+
+                            <p>{{ locked_user }}</p>
+                        </div>
+
+                    {% endfor %}
+                {% else %}
+                    <p class="userprofile-no-subs">Vous n'avez bloqué aucun utilisateur.</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
