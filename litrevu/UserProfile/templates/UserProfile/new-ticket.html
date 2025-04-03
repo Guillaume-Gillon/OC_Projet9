@@ -46,18 +46,18 @@
                 <!-- Si une critique est créée/modifiée en réponse à un ticket, on affiche uniquement le titre et la description -->
                 {% if ticket.title and review_form %}
                     <div class="userprofile-fields-locked">
-                        <p>{{ ticket_form.title.label }}</p>
+                        <label for="id_title">{{ ticket_form.title.label }}</label>
                         <p class="userprofile-input-title-locked">{{ ticket_form.title }}</p>
-                        <p>{{ ticket_form.description.label }}</p>
+                        <label for="id_description">{{ ticket_form.description.label }}</label>
                         <p class="userprofile-input-description-locked input">{{ ticket_form.description }}</p>
                     </div>
 
                 <!-- Sinon affichage du formulaire complet et du compteur de caractères -->
                 {% else %}
                     <div class="userprofile-fields">
-                        <p>{{ ticket_form.title.label }}</p>
+                        <label for="id_title">{{ ticket_form.title.label }}</label>
                         <p class="userprofile-input-title">{{ ticket_form.title }}</p>
-                        <p>{{ ticket_form.description.label }}</p>
+                        <label for="id_description">{{ ticket_form.description.label }}</label>
                         <p class="userprofile-input-description input">{{ ticket_form.description }}</p>
                         <p id="counter"></p>
                         <p>Image (.jpg - .png - .bmp  ...)</p>

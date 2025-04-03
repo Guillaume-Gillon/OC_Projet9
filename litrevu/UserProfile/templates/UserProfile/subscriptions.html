@@ -5,7 +5,7 @@
     <div class="userprofile-contener">
         <!-- Affichage du formulaire de recherche d'utilisateurs -->
         <div class="form-contener width40">
-            <img src="{% static 'UserProfile/images/find.png' %}" alt="utilisateur">
+            <img src="{% static 'UserProfile/images/find.png' %}" alt="Loupe">
             <h2>Rechercher d'autres utilisateurs</h2>
 
             <form class="subs-form" action="" method="post" novalidate>
@@ -21,7 +21,7 @@
         <div class="userprofile-suscription-subscribers-contener">
             <!-- Affichage de la liste des abonnements de l'utilisateur -->
             <div class="userprofile-subs-contener">
-                <img src="{% static 'UserProfile/images/subscriptions.png' %}" alt="utilisateur">
+                <img src="{% static 'UserProfile/images/subscriptions.png' %}" alt="Livres empilés">
                 <h2>Vos abonnements</h2>
                 <div>
                     {% if user.subscriptions.all %}
@@ -30,7 +30,7 @@
 
                                 <img class="userprofile-unsubscribe-button"
                                 src="{% static 'UserProfile/images/unsubscribe.png' %}"
-                                alt="Bouton annuler abonnement"
+                                alt="Croix rouge"
                                 data-title="Annuler l'abonnement" 
                                 data-subscriptionid="{{ subscription.id }}" 
                                 data-image="{% static 'images/exclamation3.png' %}" 
@@ -49,7 +49,7 @@
 
             <!-- Affichage de la liste des abonnés à l'utilisateur -->
             <div class="userprofile-subs-contener">
-                <img src="{% static 'UserProfile/images/subscribers.png' %}" alt="utilisateur">
+                <img src="{% static 'UserProfile/images/subscribers.png' %}" alt="Pouce levé">
                 <h2>Vos abonnés</h2>
 
                 {% if user.subscribers.all %}
@@ -58,7 +58,7 @@
 
                             <img class="userprofile-unsubscribe-button"
                             src="{% static 'UserProfile/images/lock-user.png' %}"
-                            alt="Bouton bloquer l'utilisateur"
+                            alt="Panneau barré"
                             data-title="Bloquer l'utilisateur" 
                             data-subscriberid="{{ subscriber.id }}" 
                             data-image="{% static 'images/exclamation3.png' %}" 
@@ -77,7 +77,7 @@
 
             <!-- Affichage de la liste des utilisateurs bloqués -->
             <div class="userprofile-subs-contener">
-                <img src="{% static 'UserProfile/images/locked-users.png' %}" alt="utilisateur">
+                <img src="{% static 'UserProfile/images/locked-users.png' %}" alt="Panneau interdit">
                 <h2>Utilisateurs bloqués</h2>
 
                 {% if user.locked_users %}
@@ -86,7 +86,7 @@
 
                             <img class="userprofile-unlock-button"
                             src="{% static 'UserProfile/images/unlock-user.png' %}"
-                            alt="Bouton débloquer l'utilisateur"
+                            alt="Symbole de validation"
                             data-title="Débloquer l'utilisateur" 
                             data-username="{{ locked_user }}" 
                             data-image="{% static 'images/question3.png' %}" 

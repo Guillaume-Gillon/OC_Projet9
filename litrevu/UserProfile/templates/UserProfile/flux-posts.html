@@ -57,10 +57,10 @@ Liste des noms de blocs :
                         <div class="userprofile-review-title">
                             <p>
                                 {% for star in element.nb_stars %}
-                                    <img class="userprofile-rating-img" src="{% static 'UserProfile/images/full-star-2.png' %}" alt="Etoile">
+                                    <img class="userprofile-rating-img" src="{% static 'UserProfile/images/full-star-2.png' %}" alt="Etoile pleine">
                                 {% endfor %}
                                 {% for star in element.nb_empty_stars %}
-                                    <img class="userprofile-rating-img" src="{% static 'UserProfile/images/empty-star.png' %}" alt="Etoile">
+                                    <img class="userprofile-rating-img" src="{% static 'UserProfile/images/empty-star.png' %}" alt="Etoile vide">
                                 {% endfor %}
                             </p>
                             <p>-</p>

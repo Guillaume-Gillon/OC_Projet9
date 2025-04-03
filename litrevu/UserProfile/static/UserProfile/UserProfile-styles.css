@@ -143,6 +143,7 @@
     font-size: 1.4rem;
     font-weight: 500;
     background-color: #f9faec;
+    margin-top: 1rem;
 }
 
 .userprofile-input-title-locked input {
@@ -154,6 +155,7 @@
     background-color: rgba(0, 0, 0, 0);
     box-shadow: none;
     border: none;
+    margin-top: 1rem;
 }
 
 .userprofile-input-title-locked input:focus {
@@ -171,6 +173,7 @@
     font-size: 1.2rem;
     background-color: #f9faec;
     resize: none;
+    margin-top: 1rem;
 }
 
 .userprofile-input-description-locked textarea {
@@ -184,6 +187,7 @@
     resize: none;
     box-shadow: none;
     border: none;
+    margin-top: 1rem;
 
 
 }

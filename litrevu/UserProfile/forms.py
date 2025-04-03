@@ -10,6 +10,7 @@ class SearchingForm(forms.Form):
             attrs={
                 "placeholder": "Entrez le nom de l'utilisateur",
                 "class": "userprofile-text-field",
+                "aria-label": "Nom d'utilisateur",
             }
         ),
     )

@@ -8,9 +8,9 @@
     <div class="userprofile-review-container">
         <h2>Votre critique</h2>
         <div class="userprofile-fields">
-            <p>{{ review_form.headline.label }}</p>
+            <label for="id_headline">{{ review_form.headline.label }}</label>
             <p class="userprofile-input-title">{{ review_form.headline }}</p>
-            <p>{{ review_form.body.label }}</p>
+            <label for="id_body">{{ review_form.body.label }}</label>
             <p class="userprofile-input-description input">{{ review_form.body }}</p>
             <p id="counter"></p>
 
@@ -21,7 +21,7 @@
                         <div class="userprofile-button-radio-contener">
                             {{ element }}
                         </div>
-                        <img class="userprofile-rating-img" src="{% static 'UserProfile/images/full-star-2.png' %}" alt="Etoile">
+                        <img class="userprofile-rating-img" src="{% static 'UserProfile/images/full-star-2.png' %}" alt="Etoile pleine">
                     </div>
                 {% endfor %}
             </div>
