@@ -76,8 +76,7 @@ Dans la barre d'adresse de votre navigateur, tapez <br>
 
 ## Fonctionnement du programme
 
-L'application comporte différentes sections :<br>
-<br>
+L'application comporte différentes sections :
 - Une page de connexion<br>
 - Une page d'inscription<br>
 - Une page d'affichage du flux personnalisé<br>
