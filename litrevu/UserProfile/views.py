@@ -47,7 +47,8 @@ def define_elements(request, subscriptions_users=None):
         elements.append(review)
 
     for other_review in ticket_reviews:
-        elements.append(other_review)
+        if other_review not in elements:
+            elements.append(other_review)
 
     sorted_elements = sorted(elements, key=lambda obj: obj.time_created, reverse=True)
     return sorted_elements
