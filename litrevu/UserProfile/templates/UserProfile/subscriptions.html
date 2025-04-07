@@ -28,14 +28,16 @@
                         {% for subscription in user.subscriptions.all %}
                             <div class="userprofile-subs-users">
 
-                                <img class="userprofile-unsubscribe-button"
-                                src="{% static 'UserProfile/images/unsubscribe.png' %}"
-                                alt="Croix rouge"
-                                data-title="Annuler l'abonnement" 
-                                data-subscriptionid="{{ subscription.id }}" 
-                                data-image="{% static 'images/exclamation3.png' %}" 
-                                data-message="Souhaitez-vous annuler l'abonnement à {{ subscription.username }} ?" 
-                                onclick="open_modal_window(this.dataset.title, this.dataset.subscriptionid, this.dataset.image, this.dataset.message)">
+                                <button class="userprofile-image-button">
+                                    <img class="userprofile-unsubscribe-button"
+                                    src="{% static 'UserProfile/images/unsubscribe.png' %}"
+                                    alt="Annuler l'abonnement"
+                                    data-title="Annuler l'abonnement" 
+                                    data-subscriptionid="{{ subscription.id }}" 
+                                    data-image="{% static 'images/exclamation3.png' %}" 
+                                    data-message="Souhaitez-vous annuler l'abonnement à {{ subscription.username }} ?" 
+                                    onclick="open_modal_window(this.dataset.title, this.dataset.subscriptionid, this.dataset.image, this.dataset.message)">
+                                </button>
                                 
                                 <p>{{ subscription.username }}</p>
                             </div>
@@ -55,15 +57,16 @@
                 {% if user.subscribers.all %}
                     {% for subscriber in user.subscribers.all %}
                         <div class="userprofile-subs-users">
-
-                            <img class="userprofile-unsubscribe-button"
-                            src="{% static 'UserProfile/images/lock-user.png' %}"
-                            alt="Panneau barré"
-                            data-title="Bloquer l'utilisateur" 
-                            data-subscriberid="{{ subscriber.id }}" 
-                            data-image="{% static 'images/exclamation3.png' %}" 
-                            data-message="Souhaitez-vous bloquer {{ subscriber.username }} ?" 
-                            onclick="open_modal_window(this.dataset.title, this.dataset.subscriberid, this.dataset.image, this.dataset.message)">
+                            <button class="userprofile-image-button">
+                                <img class="userprofile-unsubscribe-button"
+                                src="{% static 'UserProfile/images/lock-user.png' %}"
+                                alt="Bloquer l'utilisateur"
+                                data-title="Bloquer l'utilisateur" 
+                                data-subscriberid="{{ subscriber.id }}" 
+                                data-image="{% static 'images/exclamation3.png' %}" 
+                                data-message="Souhaitez-vous bloquer {{ subscriber.username }} ?" 
+                                onclick="open_modal_window(this.dataset.title, this.dataset.subscriberid, this.dataset.image, this.dataset.message)">
+                            </button>
 
                             <p>{{ subscriber.username }}</p>
                         </div>
@@ -83,15 +86,16 @@
                 {% if user.locked_users %}
                     {% for locked_user in user.locked_users %}
                         <div class="userprofile-subs-users">
-
-                            <img class="userprofile-unlock-button"
-                            src="{% static 'UserProfile/images/unlock-user.png' %}"
-                            alt="Symbole de validation"
-                            data-title="Débloquer l'utilisateur" 
-                            data-username="{{ locked_user }}" 
-                            data-image="{% static 'images/question3.png' %}" 
-                            data-message="Souhaitez-vous débloquer {{ locked_user }} ?" 
-                            onclick="open_modal_window(this.dataset.title, this.dataset.username, this.dataset.image, this.dataset.message)">
+                            <button class="userprofile-image-button">
+                                <img class="userprofile-unlock-button"
+                                src="{% static 'UserProfile/images/unlock-user.png' %}"
+                                alt="Débloquer l'utilisateur"
+                                data-title="Débloquer l'utilisateur" 
+                                data-username="{{ locked_user }}" 
+                                data-image="{% static 'images/question3.png' %}" 
+                                data-message="Souhaitez-vous débloquer {{ locked_user }} ?" 
+                                onclick="open_modal_window(this.dataset.title, this.dataset.username, this.dataset.image, this.dataset.message)">
+                            </button>
 
                             <p>{{ locked_user }}</p>
                         </div>

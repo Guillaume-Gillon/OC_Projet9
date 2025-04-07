@@ -5,30 +5,8 @@
     <div class="useraccounts-contener">
         <div class="useraccounts-waiting-contener">
             <img src="{% static 'UserAccounts/images/check.png' %}" alt="Validation">
-            <h1>Félicitations !</h1>
             <h2>Votre inscription a bien été validée.</h2>
-            <p>Vous allez être redirigé vers la page d'accueil dans <span id="useraccounts-counter">6</span> secondes...</p>
+            <a class="button" href="{% url 'auth' %}">Retour à l'accueil</a>
         </div>
     </div>
-
-    <script>         
-        var count = 6;
-        var countElement = document.getElementById("useraccounts-counter");
-
-        function updateCounter() {
-            count--;
-
-            if (count >= 0) {
-                countElement.textContent = count;
-            }
-
-            if (count <= 0) {
-                window.location.href = "{% url 'auth' %}";
-            } else {
-                setTimeout(updateCounter, 1000);
-            }
-        }
-
-        updateCounter();
-    </script>
 {% endblock %}

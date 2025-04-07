@@ -419,3 +419,9 @@
 .userprofile-radio-contener input {
     width: 1.2rem;
 }
+
+.userprofile-image-button {
+    border: none;
+    background: none;
+    padding: 0;
+}
